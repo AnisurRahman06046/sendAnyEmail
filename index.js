@@ -1,12 +1,13 @@
 const nodemailer = require("nodemailer");
+const chalk = require("chalk");
 
 const createTransporter = () => {
   return nodemailer.createTransport({
     service: process.env.NODEMAIL_SERVICE,
     auth: {
       user: process.env.NODEMAIL_EMAIL,
-      pass: process.env.NODEMAIL_PASSWORD,
-    },
+      pass: process.env.NODEMAIL_PASSWORD
+    }
   });
 };
 
@@ -18,18 +19,29 @@ const sendAnyEmail = async (email, subject, htmlContent) => {
       from: process.env.NODEMAIL_EMAIL,
       to: email,
       subject,
-      html: htmlContent,
+      html: htmlContent
     };
 
     await transporterInstance.sendMail(mailOptions, function (error, info) {
       if (error) {
-        console.log(error);
-      } else {
-        console.log("Email sent:", info.response);
+        return console.log(
+          chalk.bold.red(
+            `\n✦ Oops! Email sending failed.Check your auth credentials.\n`
+          )
+        );
       }
+
+      console.log(
+        chalk.bold.yellow("\n✲ Email sent successfully:"),
+        info.response + "\n"
+      );
     });
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(
+      chalk.bold.red(
+        `\n✦ Oops! Email sending failed. Reason: ${error.message}\n`
+      )
+    );
   }
 };
 
