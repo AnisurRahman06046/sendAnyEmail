@@ -1,6 +1,6 @@
 {
-  "name": "send-any-email-easily",
-  "version": "1.1.1",
+  "name": "easy-emailer",
+  "version": "1.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
