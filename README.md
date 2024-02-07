@@ -34,13 +34,13 @@ const subject = 'Test Email';
 const htmlContent = '<p>Hello, this is a test email!</p>';
 
 // Sending an email
-sendAnyEmail(email, subject, htmlContent);
+await sendAnyEmail(email, subject, htmlContent);
 
 ```
 
 ### API Reference
 
-### `await sendAnyEmail(email, subject, htmlContent)`
+### `sendAnyEmail(email, subject, htmlContent)`
 
 - `email` (string): The recipient's email address.
 - `subject` (string): The subject of the email.
