@@ -40,7 +40,7 @@ sendAnyEmail(email, subject, htmlContent);
 
 ### API Reference
 
-### `sendAnyEmail(email, subject, htmlContent)`
+### `await sendAnyEmail(email, subject, htmlContent)`
 
 - `email` (string): The recipient's email address.
 - `subject` (string): The subject of the email.
