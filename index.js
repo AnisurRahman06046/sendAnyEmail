@@ -12,7 +12,7 @@ const createTransporter = () => {
 
 const sendAnyEmail = async (email, subject, htmlContent) => {
   try {
-    const transporterInstance = createTransporter(); // Use a different variable name here
+    const transporterInstance = createTransporter();
 
     const mailOptions = {
       from: process.env.NODEMAIL_EMAIL,
@@ -21,14 +21,25 @@ const sendAnyEmail = async (email, subject, htmlContent) => {
       html: htmlContent,
     };
 
-    await transporterInstance.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-        throw new Error(error);
-      } else {
-        console.log("Email sent:", info.response);
-      }
-    });
+    // Wrap the sendMail function in a Promise
+    const sendMailPromise = () => {
+      return new Promise((resolve, reject) => {
+        transporterInstance.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+            reject(error);
+          } else {
+            console.log("Email sent:", info.response);
+            resolve(info);
+          }
+        });
+      });
+    };
+
+    // Use await to wait for the Promise to resolve or reject
+    const info = await sendMailPromise();
+
+    return info;
   } catch (e) {
     console.log(e);
     throw new Error(e);

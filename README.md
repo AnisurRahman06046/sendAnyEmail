@@ -10,7 +10,7 @@ Easy Mailer is a simple and convenient Node.js library for sending emails using 
 Install the package using npm:
 
 ```bash
-npm install easy-mailer
+npm install easy-emailer
 
 ```
 
@@ -20,14 +20,14 @@ npm install easy-mailer
 
 Before using Easy Mailer, make sure to set the following environment variables:
 
-- `NODEMAIL_SERVICE`: The email service provider (e.g., "gmail", "yahoo").
+- `NODEMAIL_SERVICE`: The email service provider (e.g., "gmail", "yahoo", "outlook").
 - `NODEMAIL_EMAIL`: Your email address.
 - `NODEMAIL_PASSWORD`: Your email account password.
 
 ### Example
 
 ```jsx
-const { sendAnyEmail } = require('easy-mailer');
+const { sendAnyEmail } = require('easy-emailer');
 
 const email = 'recipient@example.com';
 const subject = 'Test Email';
@@ -67,6 +67,6 @@ This project is licensed under the MIT License - see the [LICENSE](https://www.n
 
 ## Author
 
-Md Anisur Rahman, Nahid Hassan Bulbul
+Md Anisur Rahman, Nahid Hassan Bulbul, Md Rifat Hossen Saown
 
 Feel free to customize this template further based on your project's specific features and requirements.
