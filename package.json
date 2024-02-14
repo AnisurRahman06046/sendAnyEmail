@@ -1,6 +1,6 @@
 {
   "name": "easy-emailer",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple and convenient Node.js library for sending emails using Nodemailer.",
   "main": "index.js",
   "scripts": {

@@ -21,7 +21,7 @@ const sendAnyEmail = async (email, subject, htmlContent) => {
       html: htmlContent,
     };
 
-    await transporterInstance.sendMail(mailOptions, function (error, info) {
+    transporterInstance.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
         throw new Error(error);
